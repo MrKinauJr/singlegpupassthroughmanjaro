@@ -14,5 +14,12 @@ Run **3-rebuild_grub.sh** in terminal
 
 Run **4-reboot.sh** in terminal. This will reboot you
 
+When back, run **5-check_iommu.sh**, and hope it says those arguments you added earlier, along with a bunch of other stuff. If it does, you win! If not, you've epically failed, I can't help.
+
+Run **6-show_devices.sh**, and look for a "VGA COMPATIBLE CONTROLLER", and it's Audio device. 
+## If your VGA and AUDIO deivces are in the same IOMMU group, with nothing else in it, good.
+## If your VGA and AUDIO devices aren't in the same IOMMU group, but they're each in their own group, with nothing else in either, good.
+## If your VGA and AUDIO devices are in the same group as other stuff, not good. I can't help
+
 
 
