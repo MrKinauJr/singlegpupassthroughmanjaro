@@ -36,7 +36,8 @@ Then, **CTRL+W**, search for: unix_sock_rw
 Remove the # from the line it's on
 **CTRL+X, Y, Enter**
 
-Run **9-add_user_stuff.sh** in terminal, then run **10-reboot.sh** to reboot.
+Run **9-add_user_stuff.sh** in terminal,
+then run **10-reboot.sh** to reboot.
 
 Go to [the windows 10 download page](https://www.microsoft.com/en-gb/software-download/windows10ISO) and get the iso, let it fully download. You don't need it yet, but this is so it'll be done downloading once you need it. Smart, I know
 
@@ -49,6 +50,7 @@ Run **12-restart_libvirtd** to restart libvirtd
 
 Now, some GPUs need patched firmware to work in VMs. In this example, we won't be patching it, since at the time of writing, I have an AMD Vega 64, which doesn't need patching, however we will be saving a bios anyway to pass through to the VM.
 Go to the [Techpowerup Bios Repository](https://www.techpowerup.com/vgabios/), and search for your GPU. Download it's bios. You want to find your exact model. E.G: MSI AIR BOOST VEGA 64, as opposed to just "Vega 64". Once you have your rom, rename it to "gpubios.rom", and ensure it's in your Downloads folder. 
+
 Now run **13-move_bios.sh**, which makes a folder in your libvirt folder, and moves the bios there. 
 
 
