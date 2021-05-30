@@ -100,6 +100,7 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
  
  Run **16-edit_kvmconf.sh** in terminal.
  In the text editor that opened, copy this, remembering that pasting into a terminal is CTRL+SHIFT+V: 
+ 
 **VIRSH_GPU_VIDEO=pcie_0000_**
 
  **VIRSH_GPU_AUDIO=pcie_0000_**
