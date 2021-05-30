@@ -252,7 +252,7 @@ Open virtual machine manager, and click on your win10 machine. Go to the info ic
 * Look for the line beginning with "Spinlock State"
 * Make a line below it, and paste in this:
 ````
-<vendor_id state="on" value="spaghettiandmeatballs">
+<vendor_id state="on" value="spaghettiandmeatballs"/>
 <vpindex state="on"/>
 <runtime state="on"/>
 <synic state="on"/>
