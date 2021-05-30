@@ -85,4 +85,12 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 * Now, go to the top, and press begin installation.
 * When you see a menu which says press any key to boot from CD, press any key. If you miss the time window, close the VM, right click it and force off, then try again.
 ![Windows10install](https://i.imgur.com/V2tIQDD.png)
+* Keep in mind, during first install, graphics and framerate will be pretty bad
 * You're now here. Well done!
+* Go through installation as normal for the first bit.
+* Next, install now, I don't have a product key, any version not ending in N, read and accept, next, custom install.
+* Now, press load drivers, then ok, and select the driver that appears with W10 in the name. Click it and press next.
+* Now click on Drive 0 unallocated space, and press next. Windows will install. 
+* When windows restarts, you may be put into windows, but you may be put into a terminal. If in the terminal,click the dropdown near the power icon at the top of the VM, and force it off.
+* Press the info icon, and press boot options, and tick VFIO disk 1. Then, go to the 2 CDROM drives, and remove + delete them.
+* Now press play, and go back to the view icon next to the info icon. You'll go through the windows personalisation setup now.
