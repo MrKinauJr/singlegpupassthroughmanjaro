@@ -77,4 +77,12 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 * Sockets to 1, set cores to -1 from whatever your CPU has, so a 6 core processor would have 5.
 * Press f12 and type htop. At the top you'll see a bunch of charts going horizontally at the top, which are numbered. On a Ryzen 3600, they go from 0-11, meaning there are 12 threads, or 2x the core count, meaning it has hyperthreading. If you have double as many bars as cores, set threads on your VM to 2. If it's the same as the physical cores you have, set threads to 1.
 
-* 
+* Click add hardware in the bottom left of the virtual machine manager, and select storage, which is normally at the top
+* Set however many GB you want it to have (keep in mind, the virtual disk only takes as much space as the VM is actually using, so don't worry about it immediately eating all your storage space on the Host)
+* Set the Bus Type to VirtIO instead of SATA
+* Go to [the VirtIO Driver Download link](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso) and download it. Once downloaded, add hardware to your VM again, select storage, and set the device type to CDROM Device. Press finish
+* Click on SATA CDROM 2, and click browse, then browse local, and head to your downloads, where you'll double click the VirtIO drivers iso. Press apply.
+* Now, go to the top, and press begin installation.
+* When you see a menu which says press any key to boot from CD, press any key. If you miss the time window, close the VM, right click it and force off, then try again.
+!(Windows10install)[https://i.imgur.com/V2tIQDD.png]
+* You're now here. Well done!
