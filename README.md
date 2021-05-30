@@ -6,7 +6,7 @@ Run **2-edit_grub.sh** in terminal. A text editor will open.
 On the line **GRUB_CMDLINE_LINUX_DEFAULT=**, *inside* the quotation marks, add these:
 ## iommu=pt iommu=1 amd_iommu=on video=efifb:off
 *If on Intel, change amd_iommu=on to intel_iommu=on*
-Then, CTRL+X, Y, Enter.
+Then, **CTRL+X**, Y, Enter.
 
 Run **3-rebuild_grub.sh** in terminal
 ###### Which will require a reboot of your pc
@@ -30,10 +30,16 @@ Now, we're gonna install some software.
 Run **7-install_necessary_stuffs.sh** in terminal. Say yes when it asks you to.
 
 Run **8-edit_libvirt.sh** in terminal
-You're now in a text editor. Do CTRL+W, and search for: unix_sock 
+You're now in a text editor. Do **CTRL+W**, and search for: unix_sock 
 Remove the # from the line it's on.
-Then, CTRL+W, search for: unix_sock_rw
+Then, **CTRL+W**, search for: unix_sock_rw
 Remove the # from the line it's on
-CTRL+X, Y, Enter
+**CTRL+X, Y, Enter**
 
 Run **9-add_user_stuff.sh** in terminal, then run **10-reboot.sh** to reboot.
+
+Run **11-edit_qemu.sh** in terminal, and CTRL+W to search for: user = "r
+Remove the # from the line, and change root within the quotes, to your username.
+Remove the # from the line a little below named: group = "root", and also swap root for your username
+Now **CTRL+X, Y, Enter**
+Run **12-restart_libvirtd** to restart libvirtd
