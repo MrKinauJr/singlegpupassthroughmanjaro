@@ -223,3 +223,28 @@ Now, **CTRL+X, Y, ENTER**
 Also, run **19-perms.sh**, to make these scripts excecutable.
 
 # We're nearly there! Give yourself a pat on the back
+
+Open virtual machine manager, and click on your win10 machine. Go to the info icon in the top left, and follow these steps:
+* Remove Tablet
+* Remove Display Spice
+* Remove Serial 1
+* Remove Channel spice
+* Remove Video QXL
+* Add Hardware
+* USB Host device
+* Find your keyboard here, select it and finish
+* Repeat for your mouse
+* You can try adding other things, but try them after we have a working VM, since some devices don't like it and cause a crash.
+* Add Hardware
+* PCI Host device
+* Your GPU Video adapter
+* Repeat for GPU audio adapter. You can identify either of these using the IDs from before.
+* Close the VM window for a sec, go back to the first Virtual Machine Manager window.
+* Click edit at the top, followed by preferences
+* Enable XML editing, then click back into your VM
+* Click on one of the PCIE devices, click xml, and make a line below the line </source>
+* Paste in this line:
+````
+  <rom file="/etc/libvirt/gpubios/gpubios.rom"/>
+  ````
+* Copy that line to the other PCIE device too.
