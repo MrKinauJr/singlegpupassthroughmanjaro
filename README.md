@@ -85,8 +85,8 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 * Now, go to the top, and press begin installation.
 * When you see a menu which says press any key to boot from CD, press any key. If you miss the time window, close the VM, right click it and force off, then try again.
 ![Windows10install](https://i.imgur.com/V2tIQDD.png)
-* Keep in mind, during first install, graphics and framerate will be pretty bad
 * You're now here. Well done!
+* Keep in mind, during first install, graphics and framerate will be pretty bad
 * Go through installation as normal for the first bit.
 * Next, install now, I don't have a product key, any version not ending in N, read and accept, next, custom install.
 * Now, press load drivers, then ok, and select the driver that appears with W10 in the name. Click it and press next.
