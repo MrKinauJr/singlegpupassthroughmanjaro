@@ -134,7 +134,7 @@ echo 0 > /sys/class/vtconsole/vtcon1/bind
 echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 
 #Avoid race condition
-sleep 5
+sleep 10
 
 #unload AMDGPU
 modprobe -r amdgpu
@@ -149,3 +149,76 @@ modprobe vfio_pci
 modprobe vfio_iommu_type1
 
 ````
+Copy This into the text editor, and we'll edit to fit your PC.
+
+The first 4 sections should be left alone, other than that if you have an AMD GPU, go to the package manager, press the three lines, and enable AUR. Then seach Vendor-Reset. Get the one with a longer title, it was made on the 18th November 2020.
+
+For the VTconsoles bit, go into another terminal and run **17-view_vt.sh**. For however many vtcons there are, copy the lines that are already in this code, changing the number to match. Most people just have vtcon0 and 1, which is already setup.
+
+Leave the EFI framebuffer section. The avoid race condition section basically just waits to ensure previous bits of code are excecuted before continuing. For most people, this does not need to be 10, but for some it does. Start at 10, and then once wer'e done, try lowering it and seeing what works. Personally, I use 4.
+
+If on AMD, leave the AMDGPU section alone, if on nvidia, **remove modprobe -r amdgpu**, and replace it with 
+````
+modprobe -r nvidia_drm
+modprobe -r nvidia_modeset
+modprobe -r drm_kms_helper
+modprobe -r nvidia
+modprobe -r i2c_nvidia_gpu
+modprobe -r drm
+modprobe -r nvidia_uvm
+````
+
+Then, leave the rest of the script alone, and **CTRL+X, Y, ENTER**
+
+Run **18-edit_end.sh** in terminal
+In the text editor, paste this
+````
+#debug
+set -x
+
+#load variables
+source "/etc/libvirt/hooks/kvm.conf"
+
+#unload vfio-pci
+modprobe -r vfio_pci
+modprobe -r vfio_iommu_type1
+modprobe -r vfio
+
+#Rebind GPU
+virsh nodedev-reattach $VIRSH_GPU_VIDEO
+virsh nodedev-reattach $VIRSH_GPU_AUDIO
+
+#Rebind VTconsoles
+echo 1 > /sys/class/vtconsole/vtcon0/bind
+echo 1 > /sys/class/vtconsole/vtcon1/bind
+
+#Bind EFI-framebuffer
+echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+#Load AMDGPU
+modprobe amdgpu
+
+#Restart Display Service
+systemctl start sddm.service
+````
+The first 4 sections should be left alone always. 
+
+For VTconsoles, make the same changes, if any, you made in the start script.
+
+Leave the framebuffer alone, and then for AMD, leave the rest alone too.
+On NVIDIA, remove modprobe amdgpu, and replace with this:
+````
+modprobe nvidia_drm
+modprobe nvidia_modeset
+modprobe drm_kms_helper
+modprobe nvidia
+modprobe i2c_nvidia_gpu
+modprobe drm
+modprobe nvidia_uvm
+````
+
+Now, **CTRL+X, Y, ENTER**
+
+Also, run **19-perms.sh**, to make these scripts excecutable.
+
+# We're nearly there! Give yourself a pat on the back
