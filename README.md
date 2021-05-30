@@ -21,5 +21,10 @@ Run **6-show_devices.sh**, and look for a "VGA COMPATIBLE CONTROLLER", and it's 
 ## If your VGA and AUDIO devices aren't in the same IOMMU group, but they're each in their own group, with nothing else in either, good.
 ## If your VGA and AUDIO devices are in the same group as other stuff, not good. I can't help
 
+Now, note down the numbers and letters which come just before the device names. 
+My video adapter is 2b:00:0, and audio is 2b:00:1, for example.
+Just make a text file somewhere to keep them safe.
 
-
+Now, we're gonna install some software.
+###### this next script will make 4 popups which want your password. This is ok, it is starting and enabling services.
+Run **7-install_necessary_stuffs** in terminal. Say yes when it asks you to.
