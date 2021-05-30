@@ -75,7 +75,7 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 * Go to CPUs
 * Click topology, and manually set topology.
 * Sockets to 1, set cores to -1 from whatever your CPU has, so a 6 core processor would have 5.
-* Press f12 and type htop. At the top you'll see a bunch of charts going horizontally at the top, which are numbered. On a Ryzen 3600, they go from 0-11, meaning there are 12 threads, or 2x the core count, meaning it has hyperthreading. If you have double as many bars as cores, set threads on your VM to 2. If it's the same as the physical cores you have, set threads to 1.
+* Go to a terminal and type htop. At the top you'll see a bunch of charts going horizontally at the top, which are numbered. On a Ryzen 3600, they go from 0-11, meaning there are 12 threads, or 2x the core count, meaning it has hyperthreading. If you have double as many bars as cores, set threads on your VM to 2. If it's the same as the physical cores you have, set threads to 1.
 
 * Click add hardware in the bottom left of the virtual machine manager, and select storage, which is normally at the top
 * Set however many GB you want it to have (keep in mind, the virtual disk only takes as much space as the VM is actually using, so don't worry about it immediately eating all your storage space on the Host)
@@ -94,3 +94,7 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 * When windows restarts, you may be put into windows, but you may be put into a terminal. If in the terminal,click the dropdown near the power icon at the top of the VM, and force it off.
 * Press the info icon, and press boot options, and tick VFIO disk 1. Then, go to the 2 CDROM drives, and remove + delete them.
 * Now press play, and go back to the view icon next to the info icon. You'll go through the windows personalisation setup now.
+* When you're on the windows desktop, shut down windows. You can X out of it in Linux afterwards.
+## Hooks Time
+ Run **15-make_get_files.sh** in terminal. This will download files to do with VM hooks, and make directories, along with restarting libvertd.
+ Run **16-edit_kvmconf.sh**
