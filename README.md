@@ -57,3 +57,24 @@ Now run **13-move_bios.sh**, which makes a folder in your libvirt folder, and mo
 Open Virtual Machine Manager, which should've been installed earlier, click QEMU/KVM, and then the New VM button in the top left. Here are the buttons to press:
 * Local Install Media
 * Forward
+* Browse
+* Browse Local
+* Downloads
+* Double Click The Windows 10 ISO file
+* Forward
+* 80% of your Ram in the Memory section
+* Leave CPU settings alone for later
+* Forward
+* Untick "Enable Storage For This Machine", we'll handle it later.
+* Forward
+* Keep the Name at win10
+* Tick customise config before install
+* Finish
+* Click BIOS, and change it to the UEFI *not ending in secboot*
+* Apply
+* Go to CPUs
+* Click topology, and manually set topology.
+* Sockets to 1, set cores to -1 from whatever your CPU has, so a 6 core processor would have 5.
+* Press f12 and type htop. At the top you'll see a bunch of charts going horizontally at the top, which are numbered. On a Ryzen 3600, they go from 0-11, meaning there are 12 threads, or 2x the core count, meaning it has hyperthreading. If you have double as many bars as cores, set threads on your VM to 2. If it's the same as the physical cores you have, set threads to 1.
+
+* 
