@@ -98,8 +98,54 @@ Open Virtual Machine Manager, which should've been installed earlier, click QEMU
 ## Hooks Time
  Run **15-make_get_files.sh** in terminal. This will download files to do with VM hooks, and make directories, along with restarting libvertd.
  
- Run **16-edit_kvmconf.sh**
+ Run **16-edit_kvmconf.sh** in terminal.
  In the text editor that opened, copy this, remembering that pasting into a terminal is CTRL+SHIFT+V: 
 **VIRSH_GPU_VIDEO=pcie_0000_**
 
  **VIRSH_GPU_AUDIO=pcie_0000_**
+ 
+ Now, add your PCIE IOMMU IDs you saved before. The formatting is as so...
+ If I have an ID of 2b:00:1, I would enter is as 2b_00_1 after the underscore in the text file.
+ So, for me, it's VIRSH_GPU_VIDEO=pcie_0000_2b_00_0, and VIRSH_GPU_AUDIO=pcie_0000_2b_00_1
+ 
+ Now, **CTRL+X, Y, Enter**
+ 
+ Run **16-edit_start.sh** in terminal.
+ 
+ Let's take a look at this.
+````
+#debug
+set -x
+
+#Vendor Reset (prevent AMD card reset break)
+modprobe vendor-reset
+
+#load variables defined earlier
+source "/etc/libvirt/hooks/kvm.conf"
+
+#Stop disp manager
+systemctl stop sddm.service
+
+#unbind VTconsoles
+echo 0 > /sys/class/vtconsole/vtcon0/bind
+echo 0 > /sys/class/vtconsole/vtcon1/bind
+
+#Unbind efi-framebuffer
+echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
+
+#Avoid race condition
+sleep 5
+
+#unload AMDGPU
+modprobe -r amdgpu
+
+#unbind GPU 
+virsh nodedev-detatch $VIRSH_GPU_VIDEO
+virsh nodedev-detatch $VIRSH_GPU_AUDIO
+
+#load vfio
+modprobe vfio
+modprobe vfio_pci
+modprobe vfio_iommu_type1
+
+````
