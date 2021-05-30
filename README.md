@@ -1,4 +1,4 @@
-# singlegpupassmanjaro
+# singlegpupassthroughmanjaro
 
 Run **1-update_things.sh** in terminal
 
