@@ -14,9 +14,9 @@ Run **3-rebuild_grub.sh** in terminal
 
 Run **4-reboot.sh** in terminal. This will reboot you
 
-When back, run **5-check_iommu.sh**, and hope it says those arguments you added earlier, along with a bunch of other stuff. If it does, you win! If not, you've epically failed, I can't help.
+When back, run **5-check_iommu.sh** in terminal, and hope it says those arguments you added earlier, along with a bunch of other stuff. If it does, you win! If not, you've epically failed, I can't help.
 
-Run **6-show_devices.sh**, and look for a "VGA COMPATIBLE CONTROLLER", and it's Audio device. 
+Run **6-show_devices.sh** in terminal, and look for a "VGA COMPATIBLE CONTROLLER", and it's Audio device. 
 ## If your VGA and AUDIO deivces are in the same IOMMU group, with nothing else in it, good.
 ## If your VGA and AUDIO devices aren't in the same IOMMU group, but they're each in their own group, with nothing else in either, good.
 ## If your VGA and AUDIO devices are in the same group as other stuff, not good. I can't help
@@ -27,4 +27,13 @@ Just make a text file somewhere to keep them safe.
 
 Now, we're gonna install some software.
 ###### this next script will make 4 popups which want your password. This is ok, it is starting and enabling services.
-Run **7-install_necessary_stuffs** in terminal. Say yes when it asks you to.
+Run **7-install_necessary_stuffs.sh** in terminal. Say yes when it asks you to.
+
+Run **8-edit_libvirt.sh** in terminal
+You're now in a text editor. Do CTRL+W, and search for: unix_sock 
+Remove the # from the line it's on.
+Then, CTRL+W, search for: unix_sock_rw
+Remove the # from the line it's on
+CTRL+X, Y, Enter
+
+Run **9-add_user_stuff.sh** in terminal, then run **10-reboot.sh** to reboot.
