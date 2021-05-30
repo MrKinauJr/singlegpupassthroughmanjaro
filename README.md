@@ -38,6 +38,8 @@ Remove the # from the line it's on
 
 Run **9-add_user_stuff.sh** in terminal, then run **10-reboot.sh** to reboot.
 
+Go to [the windows 10 download page](https://www.microsoft.com/en-gb/software-download/windows10ISO) and get the iso, let it fully download. You don't need it yet, but this is so it'll be done downloading once you need it. Smart, I know
+
 Run **11-edit_qemu.sh** in terminal, and CTRL+W to search for: user = "r
 Remove the # from the line, and change root within the quotes, to your username.
 Remove the # from the line a little below named: group = "root", and also swap root for your username
@@ -46,4 +48,10 @@ Now **CTRL+X, Y, Enter**.
 Run **12-restart_libvirtd** to restart libvirtd
 
 Now, some GPUs need patched firmware to work in VMs. In this example, we won't be patching it, since at the time of writing, I have an AMD Vega 64, which doesn't need patching, however we will be saving a bios anyway to pass through to the VM.
-Go to the [Techpowerup Bios Repository](https://www.techpowerup.com/vgabios/), and search for your GPU. Download it's bios. You want to find your exact model. E.G: MSI AIR BOOST VEGA 64, as opposed to just "Vega 64".
+Go to the [Techpowerup Bios Repository](https://www.techpowerup.com/vgabios/), and search for your GPU. Download it's bios. You want to find your exact model. E.G: MSI AIR BOOST VEGA 64, as opposed to just "Vega 64". Once you have your rom, rename it to "gpubios.rom", and ensure it's in your Downloads folder. 
+Now run **13-move_bios.sh**, which makes a folder in your libvirt folder, and moves the bios there. 
+
+
+Open Virtual Machine Manager, which should've been installed earlier, click QEMU/KVM, and then the New VM button in the top left. Here are the buttons to press:
+* Local Install Media
+* Forward
