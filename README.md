@@ -11,6 +11,8 @@ Then, CTRL+X, Y, Enter.
 Run **3-rebuild_grub.sh** in terminal
 ###### Which will require a reboot of your pc
 
+
+
 Run **4-reboot.sh** in terminal. This will reboot you
 
 
