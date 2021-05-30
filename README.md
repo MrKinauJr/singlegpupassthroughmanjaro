@@ -248,3 +248,24 @@ Open virtual machine manager, and click on your win10 machine. Go to the info ic
   <rom file="/etc/libvirt/gpubios/gpubios.rom"/>
   ````
 * Copy that line to the other PCIE device too.
+* Now go to overview, and click the XML tab.
+* Look for the line beginning with "Spinlock State"
+* Make a line below it, and paste in this:
+````
+<vendor_id state="on" value="spaghettiandmeatballs">
+<vpindex state="on"/>
+<runtime state="on"/>
+<synic state="on"/>
+<stimer state="on"/>
+<reset state="on"/>
+````
+
+# 2 more things until the end
+
+Scroll down until you see "suspend to disk" and "suspend to mem"
+
+Currently, they say no, which isn't cool, change it to yes.
+
+# Restart your PC, and give your VM a go!
+
+
