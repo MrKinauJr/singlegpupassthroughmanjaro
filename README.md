@@ -44,3 +44,6 @@ Remove the # from the line a little below named: group = "root", and also swap r
 Now **CTRL+X, Y, Enter**.
 
 Run **12-restart_libvirtd** to restart libvirtd
+
+Now, some GPUs need patched firmware to work in VMs. In this example, we won't be patching it, since at the time of writing, I have an AMD Vega 64, which doesn't need patching, however we will be saving a bios anyway to pass through to the VM.
+Go to the [Techpowerup Bios Repository](https://www.techpowerup.com/vgabios/), and search for your GPU. Download it's bios. You want to find your exact model. E.G: MSI AIR BOOST VEGA 64, as opposed to just "Vega 64".
