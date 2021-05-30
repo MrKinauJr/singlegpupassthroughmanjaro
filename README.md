@@ -41,5 +41,6 @@ Run **9-add_user_stuff.sh** in terminal, then run **10-reboot.sh** to reboot.
 Run **11-edit_qemu.sh** in terminal, and CTRL+W to search for: user = "r
 Remove the # from the line, and change root within the quotes, to your username.
 Remove the # from the line a little below named: group = "root", and also swap root for your username
-Now **CTRL+X, Y, Enter**
+Now **CTRL+X, Y, Enter**.
+
 Run **12-restart_libvirtd** to restart libvirtd
